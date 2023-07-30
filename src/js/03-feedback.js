@@ -18,7 +18,7 @@ function handleFormInput(evt) {
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
-  evt.currentTarget.reset();
+  evt.target.reset();
   console.log(JSON.parse(localStorage.getItem(FEEDBACK_FORM_KEY)));
   localStorage.removeItem(FEEDBACK_FORM_KEY);
 }
@@ -27,7 +27,7 @@ function populateMessage() {
   const savedMassege = JSON.parse(localStorage.getItem(FEEDBACK_FORM_KEY));
   if (savedMassege) {
     let { email, message } = feedbackFormEl.elements;
-    email.value = savedMassege.email;
-    message.value = savedMassege.message;
+    email.value = savedMassege.email || ' ';
+    message.value = savedMassege.message || ' ';
   }
 }
